@@ -1,0 +1,157 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.App{
+  position: relative;
+}
+.SplashScreen{
+  margin-top: -1px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    /* background:url('../images/slide_4.jpg') no-repeat; */
+    background-color: #01060c;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    transition: background-color 0.5s;
+    transition: 0.5s;
+    animation: fadeOut 1s 1.62s;
+  }
+  @keyframes fadeOut{
+    from{
+      opacity: 1;
+    }
+    to{
+      opacity: 0;
+    }
+  }
+  /* .SplashScreen img{
+    width: 100%;
+  } */
+
+  .loader {
+    border: 5px solid #2455a0; 
+    border-top: 5px solid #01060c; /*#abbdf8*/;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Themes and Color */
+.tws-theme-grad,
+.tws-theme-bar,.tws-theme-grad-hover:hover {
+	/*background-image: url(../../images/icons/bar.png) !important;*/
+  /* background: linear-gradient(to bottom, #2455a0 0%, #15448a 100%)!important; */
+  background-color: #1F4F98; 
+	/*background-repeat: repeat-x;*/
+	color: white!important;
+}
+.tws-hover-theme-text:hover,
+.tws-theme-text {
+	color: #1F4F98!important;
+}
+.tws-theme-bg {
+	background-color: #1F4F98!important;
+	color: white!important;
+}
+.tws-theme-border {
+	border: 1px solid #1B3966 !important;
+}
+.tws-theme-border-color{
+	border-color: #1B3966 !important;
+}
+.tws-theme-border-small {
+	padding: 0px;
+	border: 0.5px solid #1B3966 !important;
+}
+
+/* Top Bar */
+.tws-topbar {
+  border-top: 1px solid #fff;
+  height: 30px;
+  width: 100%;
+  padding: 0.01em 16px;
+  position:fixed;
+  width: 100%;
+	z-index: 1;
+}
+.tws-tlx-box{
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-color: white;
+  height: 100%;
+}
+.tws-tlx-box>.tws-btn{
+  height: 100%!important;
+  padding: 0.01em 5px;
+  background-color: #d22580;
+  color: #ffffff;
+}
+.tws-tlx-box>.tws-btn:hover{
+  background-color: #fff;
+  color: #01060c;
+}
+
+.tws-container::after{
+  clear: both!important;
+}
+
+/* Floats */
+.tws-left{
+  float: left!important;
+}
+.tws-right{
+  float: right!important;
+}
+.tws-center{
+  position: absolute;
+  margin: auto;
+  left: 45%;
+  top: 5px;
+}
+
+/*  */
+.tws-icon {
+  font-style: normal;
+  font-weight: bold;
+  padding: 0.05em 0.30em;
+  margin: 0 0.5em;
+  border: 1px solid;
+}
+.tws-logo::before{
+  content: "TW";
+}
+
+/* Buttons */
+.tws-btn{
+  border: 0!important;
+  cursor: pointer;
+}
+.tws-tlx-btn-name{
+  display: none;
+  transition: 0.5s!important;
+}
+.tws-tlx-box>.tws-btn:hover .tws-tlx-btn-name{
+  display: inline;
+  transition: 0.5s!important;
+
+}
+/* Rotary */
+.tws-rot-45{
+  transform: rotate(45deg);
+}
