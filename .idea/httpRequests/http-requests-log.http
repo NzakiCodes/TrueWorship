@@ -1,8 +1,0 @@
-GET http://localhost:3000
-Accept: */*
-Cache-Control: no-cache
-
-<> 2020-05-06T080731.200.html
-
-###
-
