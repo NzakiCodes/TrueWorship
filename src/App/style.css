@@ -155,3 +155,35 @@
 .tws-rot-45{
   transform: rotate(45deg);
 }
+
+
+.tws-body-open, .tws-body-close {
+	width: 100%;
+	position: relative;
+
+}
+.tws-body-open::after, 
+.tws-body-close::after{
+	clear: both;
+}
+
+
+.tws-body-open .tws-body-side{
+	float: left;
+	width: 20%;
+	transition: 0.3s;
+  border-right: 2px solid white;
+  background-color: red;
+	height: 95%!important;
+	overflow: auto;
+	position: fixed;
+	top:3.8%;
+	left:2px;
+
+}
+
+.tws-body-close .tws-body-side {
+	width: 0%;  
+	transition: 0.3s;
+	display: none;
+}

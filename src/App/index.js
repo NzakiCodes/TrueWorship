@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import './style.css';
- 
+import TopBar from './TopBar';
+import PropTypes from 'prop-types';
+
 class App extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             afterSplashText:<MainApp/>,
             controlOpt:<SplashScreen/>
@@ -41,37 +43,26 @@ const SplashScreen =() =>(
 
 function MainApp(){
     return(
-        <div className="">
+        <>
             <TopBar/>
-        </div>
+        </>
+        )
+}
+const AppBody =({bodyState})=>{
+    return(
+        <div className={`tws-body-${bodyState}`} id="tws-body">
+            <div className="tws-body-side">
+
+            </div>
+            </div>
     )
 }
-const TopBar = ()=>(
-    <div className="tws-topbar tws-theme-bar tws-container">
-            <TlxBox pos="left">
-                <TlxBtn btnName="File" title="File" icon="ellipsis-v"/>
-                <TlxBtn btnName="Tools" title="Tools" icon="wrench"/>
-                <TlxBtn btnName="Schedule" title="Schedule" icon="list"/>
-            </TlxBox>
-            <small className="tws-center"><i className="tws-icon tws-logo"/>TrueWorship</small>
-            <TlxBox pos="right">
-                <TlxBtn btnName="D.Free" title="Distraction Free Mode" icon="columns"/>
-                <TlxBtn btnName="Full Screen" title="Full Screen Mode" icon="arrows-alt-v tws-rot-45"/>
-            </TlxBox>
-    </div>
-);
-const TlxBox = ({pos, children})=>(
-    <div className={`tws-tlx-box w3-card tws-${pos}`}>
-        {children}
-    </div>
-);
 
-const TlxBtn =({btnName,icon,title})=>(
-    <>
-        <button className="tws-btn" title={title}>
-            <i className={`tws-tlx-btn-icon fa fa-${icon}`}/>{' '}
-            <span className="tws-tlx-btn-name">{btnName}</span>
-        </button>
-    </>
-);
+
+AppBody.defaultProps = {
+    bodyState:"open"
+}
+AppBody.propTypes = {
+    bodyState:PropTypes.string.isRequired
+}
 export default App;
