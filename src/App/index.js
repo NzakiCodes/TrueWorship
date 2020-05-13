@@ -45,19 +45,32 @@ function MainApp(){
     return(
         <>
             <TopBar/>
+            <AppBody/>
         </>
         )
 }
 const AppBody =({bodyState})=>{
     return(
         <div className={`tws-body-${bodyState}`} id="tws-body">
-            <div className="tws-body-side">
-
-            </div>
-            </div>
+           <SideBar/>
+        </div>
     )
 }
+const SideBar = ()=>(
+    <div className="tws-body-side">
+        <SBTabs tabtitle="File">
+        </SBTabs>
+    </div>
+);
 
+const SBTabs = ({tabtitle,children})=> {
+    return(
+        <div>
+            <span className="tws-tabtitle tws-theme-text ">{tabtitle}</span>
+            {children?children:""}
+        </div>
+    )
+}
 
 AppBody.defaultProps = {
     bodyState:"open"
