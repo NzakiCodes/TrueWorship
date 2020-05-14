@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './style.css';
 import TopBar from './TopBar';
 import PropTypes from 'prop-types';
+import { fileItems } from './sidebarItem.list';
 
 class App extends Component{
     constructor(props){
@@ -58,20 +59,55 @@ const AppBody =({bodyState})=>{
 }
 const SideBar = ()=>(
     <div className="tws-body-side">
-        <SBTabs tabtitle="File">
-        </SBTabs>
+        <SBTabs tabtitle="File" items={fileItems}/>
     </div>
 );
 
-const SBTabs = ({tabtitle,children})=> {
+const SBTabs = ({tabtitle,items})=> {
     return(
         <div>
             <span className="tws-tabtitle tws-theme-text ">{tabtitle}</span>
-            {children?children:""}
+            <TabList items={items}/>
         </div>
     )
 }
+const TabList =({items})=>(
+    <ul>
+        {
+            items.map((item)=>(
+                <TabListItem key={item.id} item={item} />
+            ))
+        }
+    </ul>
+);
+const TabListItem = ({item})=>{
+    const { image, title } = item;
 
+    return(
+            <li className=" w3-border-top w3-border-bottom w3-border-gray">
+                <span className="w3-row">
+                    <span className="w3-col s4 m4 l2">
+                        <img src={image} className="w3-image" alt={image}/>
+                    </span>
+                    <span className="w3-col s8 m8 l10">
+                        <span> {title} </span>
+                    </span>
+                    
+                </span>
+            </li>
+        )
+    };
+    // PropTypes & Default Props
+SBTabs.propTypes = {
+    tabtitle:PropTypes.object.isRequired,
+    items:PropTypes.object.isRequired
+}
+TabListItem.propTypes = {
+    item:PropTypes.object.isRequired
+}
+TabList.propTypes = {
+    items:PropTypes.object.isRequired
+}
 AppBody.defaultProps = {
     bodyState:"open"
 }
