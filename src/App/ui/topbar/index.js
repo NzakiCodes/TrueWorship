@@ -20,7 +20,7 @@ const TopBar = props => {
 
 
 const TlxBox = ({pos, children})=>(
-    <div className={`tws-tlx-box w3-card tws-${pos}`}>
+    <div className={`tws-tlx-box tws-${pos}`}>
         {children}
     </div>
 );

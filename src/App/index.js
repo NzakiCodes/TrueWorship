@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, Suspense } from 'react';
 import './style.css';
-import TopBar from './TopBar';
+import TopBar from './ui/topbar';
 import PropTypes from 'prop-types';
-import { fileItems } from './sidebarItem.list';
+import { fileItems, toolItems } from './sidebarItem.list';
+import SideBar from './ui/sidebar';
 
 class App extends Component{
     constructor(props){
@@ -37,7 +38,10 @@ class App extends Component{
 // Splash Screen Shows at Apllication's Startup for 3seconds then Fades Out.
 const SplashScreen =() =>(
     <div className="SplashScreen">
-        <img src="assets/images/TrueWorshipLogo.png" alt="TrueWorship Logo"/>
+        <Suspense fallback={<h1>Loading..</h1>}>
+            <img src="assets/images/TrueWorshipLogo.png" alt="TrueWorship Logo"/>
+        </Suspense>
+        
         <div class="loader"></div>
     </div>
 );
@@ -53,60 +57,9 @@ function MainApp(){
 const AppBody =({bodyState})=>{
     return(
         <div className={`tws-body-${bodyState}`} id="tws-body">
-           <SideBar/>
+           <SideBar fileItems={fileItems} toolItems={toolItems}/>
         </div>
     )
-}
-const SideBar = ()=>(
-    <div className="tws-body-side">
-        <SBTabs tabtitle="File" items={fileItems}/>
-    </div>
-);
-
-const SBTabs = ({tabtitle,items})=> {
-    return(
-        <div>
-            <span className="tws-tabtitle tws-theme-text ">{tabtitle}</span>
-            <TabList items={items}/>
-        </div>
-    )
-}
-const TabList =({items})=>(
-    <ul>
-        {
-            items.map((item)=>(
-                <TabListItem key={item.id} item={item} />
-            ))
-        }
-    </ul>
-);
-const TabListItem = ({item})=>{
-    const { image, title } = item;
-
-    return(
-            <li className=" w3-border-top w3-border-bottom w3-border-gray">
-                <span className="w3-row">
-                    <span className="w3-col s4 m4 l2">
-                        <img src={image} className="w3-image" alt={image}/>
-                    </span>
-                    <span className="w3-col s8 m8 l10">
-                        <span> {title} </span>
-                    </span>
-                    
-                </span>
-            </li>
-        )
-    };
-    // PropTypes & Default Props
-SBTabs.propTypes = {
-    tabtitle:PropTypes.object.isRequired,
-    items:PropTypes.object.isRequired
-}
-TabListItem.propTypes = {
-    item:PropTypes.object.isRequired
-}
-TabList.propTypes = {
-    items:PropTypes.object.isRequired
 }
 AppBody.defaultProps = {
     bodyState:"open"
